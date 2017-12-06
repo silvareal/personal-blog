@@ -1,0 +1,63 @@
+<! DOCTYPE html>
+{% extends 'post/base.html' %}
+
+{% block content %}
+
+<div style="border-top: solid #424242 8px ;"
+class="container">
+
+	<div style="padding-top: 50px;" class="res head">
+	  <h2 style="text-transform: uppercase;font-weight: 800">resume</h2>
+	</div>
+
+<main>
+<div>
+	<h3 style="font-weight: 900">Sylvernus Akubo</h2><hr>
+	<h4><b>number:</b> +(234)8027206129</h4>
+	<h4><b>email:</b> <span style="font-size:18px;"><a href="">akubosylvernus@gmail.com</a></span></h4>
+	<div style="padding-top: 20px" class="resume">
+	<p >I'm python & django developer, specialised in back-end code and logical architecture, and am basically self taught. </p>
+	<p>Can't be the perfect guy but am definitely the right guy for your project,i write some handful of sourcy and pythonic code, worked with django for some couple of months.
+	</p>
+	<p>Am also expanding my knowledge to some wide range of web technology like <b>bootstrap</b>, <b>javascript</b>, <b>celery</b> and <b>RabbitMQ</b>.</p>
+</div>
+<div style="margin-top: 50px" class="jumbotron">
+<h2 style="text-align: center;font-weight: 900;">skills</h2><hr>
+
+<h3 style="	margin-top: 50px;color: #555;font-weight: 900;font-family: Georgia, Serif;
+	font-style: italic;">html 
+	<meter style="float: right;" value="30" min="0" max="100"></meter>
+	</h3> 
+
+
+<h3 style="margin-top: 50px;	color: #555;font-weight: 900;font-family: Georgia, Serif;
+	font-style: italic;">bootstrap
+	<meter style="float: right;" value="20" min="0" max="100"></meter>
+	</h3> 
+
+<h3 style="	margin-top: 50px;color: #555;font-weight: 900;font-family: Georgia, Serif;
+	font-style: italic;">python
+	<meter style="float: right;" value="45" min="0" max="100"></meter>
+	</h3> 
+
+
+<h3 style="	color: #555;font-weight: 900;font-family: Georgia, Serif;
+	font-style: italic;">django 
+	<meter style="float: right;" value="38" min="0" max="100"></meter>
+	</h3> 
+</div>
+
+
+<h2 style="text-align: center;font-weight: 900;padding-top: 60px;">portfolio<br><a href="#">facebook</a> <a href="#">twitter</a> <a href="#">github</a></h2>
+
+<div style="padding-top: 50px;padding-bottom: 100px; " class="row">
+{% include 'resume/portfolio.html' %}
+</div>
+
+</main>
+</div>
+<div >
+		{% include "resume/form.html" %}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "post/base.html" %}
+{% block titlle %}{{ super.block }} || {{ title }} {% endblock %}
+{% block content %}
+
+<p>
+	<a href="{% url 'post:post_share' post.id %}">    
+		Share this post  
+	</a>
+
+<div style="border-top: solid #424242 8px ; margin: 84px 24px 0px;
+">
+
+<div style="padding-top: 50px;" class="head">
+	<h2 style="text-transform: uppercase;font-weight: 700">{{ post.title }}</h2>
+	<p style="color: #777;">{{ post.created|date }}</p>
+	<p style="background-color:rgba(0,255,0,0.2);display: inline-block;font-size: 20px;">Author<span style="background-color:rgba(0,255,0,0.8);color: white;border: solid rgb(0,255,0) 8px;  font-size: 20px;display: inline-block;padding-right: 10px;padding-left: 10px; ">{{ post.author }}</span>
+	</p>
+
+	{% if post.status == 'draft' %}
+	<p style="color: red">Draft←future post</p>
+	{% endif %}
+
+</div>
+
+<div style=" padding-top: 10px; padding-bottom: 10px; margin-bottom: 300px;width: 100%  ">
+
+	{% if post.image %}
+	<img style="box-shadow:1px 2px 30px; max-height: 600px " class="img-responsive" alt="{{ post.image_info }}" width="100%"  src="{{ post.image.url }}" />
+	{% endif %}
+	
+	<span style="padding-top: 30px;font-size: 18px;line-height: 1.8em;padding-left: 5px;padding-right: 5px;
+	font-family: "Open Sans", arial, sans-serif;">{{ post.content|safe }}</span>
+	
+</div>
+</div>
+</div>
+{% endblock %}

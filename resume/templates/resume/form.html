@@ -1,0 +1,31 @@
+<form action="{% url 'resume_email' %}" method="POST" autocomplete="true"> {% csrf_token %}
+	<fieldset>
+		<div style="margin: 20px 50px 50px 50px;text-align:center">
+			<span style="font-size:20px;padding-bottom:90px;font-family: 'Helvetica Neue' ,Helvetica, Arial, sans-serif"><b>CONTACT ME</b></span><hr>
+			<p style="color: #888 ;">am always available...</p>
+		</div>
+			<div class="contact-form form-group">
+					<label for="" required="required" >Name*</label>
+					<input style="width: 100%;" type="text"  class="form-input"/>
+				</div>
+
+				<div class="contact-form form-group">
+					<label for="" required="required">E-mail*</label>
+					<input style="width: 100%;" type="email"  class="form-input"/>
+				</div>
+
+				<div class="contact-form form-group">
+					<label for="" required="required">Subject*</label>
+					<input type="text" style="width: 100%;" class="form-input"/>
+				</div>
+
+				<div class="contact-form form-group">
+					<label for="">message</label>
+					<textarea cols="40" rows="5" type="text" style="width: 100%;" class="form-input" ></textarea>
+				</div>
+				<div class="contact-form form-group">
+				<input type="submit" class="form-input" style="width: 100%;" value="SEND MESSAGE"/>
+				</div>
+	</fieldset>
+
+</form>

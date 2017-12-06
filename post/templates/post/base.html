@@ -1,0 +1,29 @@
+<! DOCTYPE html >
+{% load staticfiles %}
+<html lang="eng">
+<head>
+    <title>{% block title %}silva blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body >
+<div>
+	{% include "post/message.html" %}
+
+	<header class="head " >
+	<a href="{% url 'post:lists' %}" class="resume-head">silvablog</a>  <a href="{% url 'resume_cv' %}" class="resume-head" >resume</a>  
+	</header>
+	{% block content %}
+	{% endblock %}
+
+</div>
+<footer class="containers head footer" style="margin-top: 200px;">
+	<div class="footer-copyright"><b>django</b> web app<br>  © All rights reserved.</div>
+</footer>
+</body>
+</html>
