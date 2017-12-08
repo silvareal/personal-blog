@@ -12,6 +12,7 @@ class PostForm(forms.ModelForm):
             "image_info",
             "author",
             "content",
+            "tags",
             "publish",
             "status"
         ]

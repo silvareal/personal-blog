@@ -2,17 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from taggit.managers import TaggableManager
 
 # Create your models here.
 def upload_location(instance,filename):
     return "%s %s"%(instance.id,filename)
 
-class Category(models.Model):
-    category = models.CharField(max_length=30, default="category")
-    tag = models.CharField(max_length=30, default="tag")
 
-    def __str__(self):
-        return self.category +(self.tag)
 
 class PostManager(models.Manager):
     def get_queryset(self):
@@ -42,8 +38,8 @@ class Post(models.Model):
     created  = models.DateTimeField(auto_now=True)
     updated  = models.DateTimeField(auto_now_add=True)
     status   = models.CharField(max_length=10, choices=STATUS_CHOICE, default='draft')
-    category = models.ManyToManyField(Category)
     objects = models.Manager()
+    tags = TaggableManager()
     publishs = PostManager()
 
     class Meta:

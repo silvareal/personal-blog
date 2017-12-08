@@ -3,32 +3,10 @@ from django.shortcuts import render, get_object_or_404, Http404,redirect, HttpRe
 from django.views.generic import ListView
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from taggit.models import Tag
 
 from . models import Post
 from . forms import PostForm, PostEmail
-
-# Create your views here.
-'''def lists(request):
-    post_list = Post.publishs.all()
-    if request.user.is_superuser or request.user.is_staff:
-        post_list = Post.objects.all()
-    
-    post_var = "post"
-    paginator = Paginator(post_list, 2)
-    page = request.GET.get(post_var)
-    try:
-        posts = paginator.page(page)    
-    except PageNotAnInteger:
-        # If page is not an integer deliver the first page        
-        posts = paginator.page(1)    
-    except EmptyPage:
-        # If page is out of range deliver last page of results        
-        posts = paginator.page(paginator.num_pages)
-    context    = {
-        'Posts':posts,
-        'post_var':post_var
-    }
-    return render(request, 'post/list.html', context)'''
 
 class PostList(ListView):
     model = Post
@@ -118,21 +96,21 @@ def post_share(request, post_id):
         'sent':sent,    }
     return render(request, 'post/form.html', context)
 
-def resume_form(request):
-    sent = False
-    if request.method == Post:
-        form = ResumeMail(request.Post)
-        if form.is_valid():
-            cd = form.cleaned_data
-            subject = "{} say\'s /n {}".format(cd['name'], cd['subject'])
-            send_mail(subject, cd['message'], cd['email'], [akubosylvernus@gmail.com])
-            sent = True
-    else:
-        form = ResumeMail()
-    context = {
-        'form':form,
-        'sent':sent,
-    }
-    return render(request, 'resume/form.html', context)
-
+def post_list(request, tag_slug=None):
+    post_list = Post.publishs.all()
+    if tag_slug:
+        tag = get_object_or_404(Tag, tag_slug)
+        post_list = post_list.filter(Tags__in[tag])
+    
+    paginator = Paginator(post_list, 3) # 3 posts in each page
+    
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+       # If page is not an integer deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+       # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
     

@@ -15,12 +15,24 @@
 <div>
 	{% include "post/message.html" %}
 
-	<header class="head " >
-	<a href="{% url 'post:lists' %}" class="resume-head">silvablog</a>  <a href="{% url 'resume_cv' %}" class="resume-head" >resume</a>  
-	</header>
-	{% block content %}
-	{% endblock %}
+	<header class="head resume-head" >
+	<a href="{% url 'post:lists' %}" class="resume-had">silvablog</a>  <a href="{% url 'resume_cv' %}" class="resme-head" >resume</a>  
+    </header>
+{% regroup products by category as products_by_category %}
+{% for c in products_by_category %}
+  <h1>{{c.grouper}}</h1>
+  <ul>
+    {% for p in c.list %}
+      <li>{{p.name}}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+<a href="">frontend</a>
+</div>
 
+<div>
+    {% block content %}
+	{% endblock %}
 </div>
 <footer class="containers head footer" style="margin-top: 200px;">
 	<div class="footer-copyright"><b>django</b> web app<br>  © All rights reserved.</div>

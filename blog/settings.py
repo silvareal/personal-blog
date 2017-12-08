@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pagedown',
     'post.apps.PostConfig',
     'resume.apps.ResumeConfig',
+    'taggit',
 ]
 
 MIDDLEWARE = [

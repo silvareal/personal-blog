@@ -13,15 +13,18 @@
 <div style="padding-top: 50px;" class="head">
 	<h2 style="text-transform: uppercase;font-weight: 700">{{ post.title }}</h2>
 	<p style="color: #777;">{{ post.created|date }}</p>
-	<p style="background-color:rgba(0,255,0,0.2);display: inline-block;font-size: 20px;">Author<span style="background-color:rgba(0,255,0,0.8);color: white;border: solid rgb(0,255,0) 8px;  font-size: 20px;display: inline-block;padding-right: 10px;padding-left: 10px; ">{{ post.author }}</span>
 	</p>
-
+	<p style="color:#777;font-size:20px;" class="glyphicon glyphicon-user" ><span style="font-family:sans-serif">{{ post.author }}</span>  </p>   
+	<p style="color:#777;font-size:20px;" class="glyphicon glyphicon-tags" ><span style="font-family:sans-serif">{{ post.tags.all|join:", " }} </span></p> 
 	{% if post.status == 'draft' %}
 	<p style="color: red">Draft←future post</p>
 	{% endif %}
-
 </div>
+{% if tag %}
 
+   <h2>Posts tagged with "{{ tag.name }}"</h2>
+
+{% endif %}
 <div style=" padding-top: 10px; padding-bottom: 10px; margin-bottom: 300px;width: 100%  ">
 
 	{% if post.image %}
