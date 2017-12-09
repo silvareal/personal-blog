@@ -1,13 +1,17 @@
 {% extends "post/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
+
 <div class="col-md-12 col-md-offset-12" style="border-top: solid #424242 8px ; margin: 84px 24px 0px;">
 
 	<div style="margin-top: 50px">
 		<h2>post form</h2>
 		<form method="POST" action="" enctype="multipart/form-data">
 		    {% csrf_token %}
-			{{ form.as_p }}
-		    <input type="submit" value="create post" />
+			{{ form|crispy }}
+			<div class="contact-form form-group">
+				<input type="submit" class="contact-form form-input" style="width: 100%;" value="create post"/>
+				</div>
 		</form>
 	</div>
 

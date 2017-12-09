@@ -85,6 +85,9 @@ body {
 input:focus,textarea:focus{
 	border: solid #303030 2px;
 
+}input:focus,textarea:focus{
+	border: solid #303030 2px;
+
 }
 
 input, textarea {
@@ -97,26 +100,15 @@ input, textarea {
 
 }
 
-input[type="file"] {
-   display: inline-block;
-}
+
 
 input[type="submit"]:focus{
 	color: white;
 	background-color: #222;
 }
-button {
-	margin: 0 auto;
-	margin-left: 100px;
 
-}
 
-label {
-	margin-bottom: 5px;
-	display: inline-block;
-	font-weight: bold;
 
-}
 
 fieldset {
 	background-color: rgba(0,0,0,0.1);
@@ -147,7 +139,6 @@ textarea {
 @media (min-width: 768px) {
 	
 		.form-group .form-input {
-		  display: inline-block;
 		  width: auto;
 		  vertical-align: middle;
 		}
