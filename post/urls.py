@@ -9,12 +9,12 @@ urlpatterns = [
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{1,2})/'\
     r'(?P<post>[-\w]+)/$', views.detail, name='post_detail'),
 
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/'\
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{1,2})/'\
     r'(?P<post>[-\w]+)/delete/$', views.delete, name='post_delete'),
 
     url(r'^create/$', views.post_create, name="post_create"),
 
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/'\
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{1,2}})/'\
     r'(?P<post>[-\w]+)/update/$', views.post_update, name='post_update'), 
 
     url(r'^(?P<post_id>\d+)/share/$', views.post_share, name='post_share'),

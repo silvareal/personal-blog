@@ -85,9 +85,6 @@ body {
 input:focus,textarea:focus{
 	border: solid #303030 2px;
 
-}input:focus,textarea:focus{
-	border: solid #303030 2px;
-
 }
 
 input, textarea {
@@ -101,14 +98,21 @@ input, textarea {
 }
 
 
-
 input[type="submit"]:focus{
 	color: white;
 	background-color: #222;
 }
+button {
+	margin: 0 auto;
+	margin-left: 100px;
 
+}
 
+label {
+	margin-bottom: 5px;
+	font-weight: bold;
 
+}
 
 fieldset {
 	background-color: rgba(0,0,0,0.1);
@@ -193,7 +197,6 @@ textarea {
 
 .contain:hover .overlay{
 	bottom: 0;
-	width: ;
 	height: 100%;
 	opacity: 0.5;
   }
