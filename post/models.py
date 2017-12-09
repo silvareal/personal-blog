@@ -56,6 +56,7 @@ class Post(models.Model):
                                  self.publish.month,                             
                                  self.publish.day,
                                  self.slug])
+                                 
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
   
