@@ -26,8 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','tz&h3n$ly_l*$6fr+6*u3d#t(b9097s
 DEBUG = True
 ADMINS = (('silva', 'sylvernusakubo@yahoo.com'),)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['silvadjango.herokuapp.com','127.0.0.1']
 
 # Application definition
 
