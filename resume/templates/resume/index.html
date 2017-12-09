@@ -1,4 +1,4 @@
-<! DOCTYPE html>
+
 {% extends 'post/base.html' %}
 
 {% block content %}
@@ -41,7 +41,8 @@ class="container">
 	</h3> 
 
 
-<h3 style="	color: #555;font-weight: 900;font-family: Georgia, Serif;
+	{% load static %}
+	<h3 style="	color: #555;font-weight: 900;font-family: Georgia, Serif;
 	font-style: italic;">django 
 	<meter style="float: right;" value="38" min="0" max="100"></meter>
 	</h3> 
@@ -58,6 +59,6 @@ class="container">
 </div>
 <div >
 		{% include "resume/form.html" %}
-	</div>
+</div>
 
 {% endblock %}

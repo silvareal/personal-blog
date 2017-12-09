@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+
+#taggit 
 from taggit.managers import TaggableManager
+from taggit.models import TaggedItemBase
 
 # Create your models here.
 def upload_location(instance,filename):

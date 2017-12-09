@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^post/', include('post.urls')),
     url(r'^resume/$', TemplateView.as_view(template_name='resume/index.html'),name='resume_cv'),
-    url(r'^resume/$', views.resume_form ,name='resume_email'),
 ]
 
 if settings.DEBUG:

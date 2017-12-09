@@ -113,4 +113,6 @@ def post_list(request, tag_slug=None):
     except EmptyPage:
        # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
+    return render(request, 'post/list.html', locals())
+    
     

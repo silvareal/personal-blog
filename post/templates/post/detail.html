@@ -1,30 +1,46 @@
 {% extends "post/base.html" %}
+
 {% block titlle %}{{ super.block }} || {{ title }} {% endblock %}
+
 {% block content %}
 
+
+<!--
 <p>
 	<a href="{% url 'post:post_share' post.id %}">    
 		Share this post  
 	</a>
+</p>
+-->
 
 <div style="border-top: solid #424242 8px ; margin: 84px 24px 0px;
 ">
 
 <div style="padding-top: 50px;" class="head">
 	<h2 style="text-transform: uppercase;font-weight: 700">{{ post.title }}</h2>
+
 	<p style="color: #777;">{{ post.created|date }}</p>
-	</p>
+	
+	
 	<p style="color:#777;font-size:20px;" class="glyphicon glyphicon-user" ><span style="font-family:sans-serif">{{ post.author }}</span>  </p>   
-	<p style="color:#777;font-size:20px;" class="glyphicon glyphicon-tags" ><span style="font-family:sans-serif">{{ post.tags.all|join:", " }} </span></p> 
+	{% if post.tags %}
+		<p style="color:#777;font-size:20px;" class="glyphicon glyphicon-tags" >
+			<span style="font-family:sans-serif">{{ post.tags.all|join:", "}}</span>
+		</p> 
+	{% endif %}
+	
 	{% if post.status == 'draft' %}
 	<p style="color: red">Draft←future post</p>
 	{% endif %}
+	<div>
+    <a href="http://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fa fa-facebook"></a> 
+    <a href="https://twitter.com/home?status={{ instance.content}}%20{{ request.build_absolute_uri }}" class="fa fa-twitter"></a>
+    <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}/&title={{ instance.title }}&summary={{ quote_tag }}&source={{ request.build_absolute_uri }}/"></a>
+    <a class="fa fa-google" href="https://plus.google.com/share?url={{ request.build_absolute_uri }}">+</a>
+	<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/&title={{ instance.title }}"></a>
+	</div>
 </div>
-{% if tag %}
 
-   <h2>Posts tagged with "{{ tag.name }}"</h2>
-
-{% endif %}
 <div style=" padding-top: 10px; padding-bottom: 10px; margin-bottom: 300px;width: 100%  ">
 
 	{% if post.image %}
@@ -33,7 +49,8 @@
 	
 	<span style="padding-top: 30px;font-size: 18px;line-height: 1.8em;padding-left: 5px;padding-right: 5px;
 	font-family: "Open Sans", arial, sans-serif;">{{ post.content|safe }}</span>
-	
+<p>
+
 </div>
 </div>
 </div>

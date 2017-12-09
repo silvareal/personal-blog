@@ -186,3 +186,74 @@ textarea {
 	margin-top: 10px;
 	border: solid rgba(255,0,0,0.8) 3px;
 }
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #555;
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	transition: .5s ease;
+	opacity: 0.3;
+  }
+
+.contain:hover .overlay{
+	bottom: 0;
+	width: ;
+	height: 100%;
+	opacity: 0.5;
+  }
+
+
+
+.text {
+	color: white;
+	top: 50%;
+	margin: 20px 0px 20px 0px;
+	text-align: center;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.fa {
+	padding: 20px;
+	font-size: 50px;
+	width: 50px;
+	text-decoration: none;
+	text-align: center;
+	margin: 5px 2px;
+	border-radius: 50%;
+}
+
+.fa:hover {
+	opacity: 0.7;
+}
+
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+  }
+  .fa-twitter {
+	background: #55ACEE;
+	color: white;
+  }
+  
+  .fa-google {
+	background: #dd4b39;
+	color: white;
+  }
+  
+  .fa-linkedin {
+	background: #007bb5;
+	color: white;
+  }
+  .fa-reddit {
+	background: #ff5700;
+	color: white;
+  }
+  
+	
