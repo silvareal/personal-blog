@@ -20,10 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tz&h3n$ly_l*$6fr+6*u3d#t(b9097sn+12s%^9fw-tj@snqnp'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','tz&h3n$ly_l*$6fr+6*u3d#t(b9097sn+12s%^9fw-tj@snqnp')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ADMINS = (('silva', 'sylvernusakubo@yahoo.com'),)
 
 ALLOWED_HOSTS = []
 
@@ -138,6 +139,14 @@ EMAIL_HOST_USER = 'sendgrid_username'
 EMAIL_HOST_PASSWORD = 'sendgrid_password'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True'''
+
+from decouple import config
+from dj_database_url import parse as dburl
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 #gmail smtp
 EMAIL_HOST = 'smtp.gmail.com' 
