@@ -26,6 +26,56 @@
 	text-decoration: none;
 }
 
+.con-img {
+	position: relative;
+	text-align: center;
+	font-family: "Open Sans", arial, sans-serif;
+}
+
+.con-text {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	font-size: 52px;
+	transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (max-width: 780px) {
+	.con-text
+	{
+		font-size: 20px; 
+	}
+}
+@media only screen and (max-width: 265px) {
+	.con-text
+	{
+		font-size: 15px; 
+	}
+}
+@media only screen and (max-width: 199px) {
+	.con-text
+	{
+		font-size: 10px; 
+	}
+}
+
+.con-bottom {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 15px;
+}
+@media only screen and (max-width: 269px){
+	.con-bottom
+	{
+		visibility: hidden;
+	}
+}
+
+
+
 ::-moz-selection {
 	background: #FFF5B8;
 }
@@ -65,9 +115,7 @@
 html body {
 	height: 100%
 }
-body {
-	margin: 0;
-}
+
 
 .resume p{
 	color: #999;
@@ -156,6 +204,7 @@ textarea {
 	}
 
 .resume-head a{
+	border-radius: 10%;
 	display: inline-block;
 	background-color: rgba(255,0,0,0.6);
 	padding: 5px 5px 5px 5px;
@@ -164,14 +213,12 @@ textarea {
 	font-family: "Open Sans", arial, sans-serif;
 	margin-top: 10px;
 	border: solid rgba(255,0,0,0.8) 2px;
-	position: relative;
+
 }
 
 
 .resume-head a:hover{
-	transition: all 1.5s ease-in-out;
-	-moz-transition: all 1.5s ease-in-out;
-	-o-transition: all 1.5s ease-in-out;
+
 	display: inline-block;
 	background-color: rgba(255,0,0,0.6);
 	padding: 5px 5px 5px 5px;
@@ -179,7 +226,8 @@ textarea {
 	text-decoration: none;
 	font-family: "Open Sans", arial, sans-serif;
 	margin-top: 10px;
-	border: solid rgba(255,0,0,0.8) 3px;
+	border: solid rgba(255,0,0,0.8) 2.3px;
+	box-shadow: 5px 5px 5px;
 }
 
 .overlay {
@@ -204,17 +252,19 @@ textarea {
 
 
 .text {
+	width: 100%;
 	color: white;
 	top: 50%;
-	margin: 20px 0px 20px 0px;
+	bottom: 50%;
+	margin: 5px 0px 5px 0px;
 	text-align: center;
-	font-size: 40px;
+	font-size: 20px;
 	font-weight: 300;
 	text-transform: uppercase;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.fa {
+.div .fa {
 	padding: 20px;
 	line-height: 3em;
 	width: 50px;

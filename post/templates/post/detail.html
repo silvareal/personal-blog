@@ -32,7 +32,7 @@
 	{% if post.status == 'draft' %}
 	<p style="color: red">Draft←future post</p>
 	{% endif %}
-	<div><b>share</b>
+	<div class="div"><b>share</b>
     <a href="http://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fa fa-facebook"></a>
     <a href="https://twitter.com/home?status={{ instance.content}}%20{{ request.build_absolute_uri }}" class="fa fa-twitter"></a>
     <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}/&title={{ instance.title }}&summary={{ quote_tag }}&source={{ request.build_absolute_uri }}/"></a>
