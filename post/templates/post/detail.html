@@ -13,7 +13,7 @@
 </p>
 -->
 
-<div style="border-top: solid #424242 8px ; margin: 84px 24px 0px;
+<div style="border-top: solid #424242 8px ; margin: 10px 24px 0px;
 ">
 
 <div style="padding-top: 50px;" class="head">
@@ -30,30 +30,28 @@
 	{% endif %}
 	
 	{% if post.status == 'draft' %}
-	<p style="color: red">Draft←future post</p>
+		<p style="color: red">Draft←future post</p>
 	{% endif %}
 	<div class="div"><b>share</b>
-    <a href="http://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fa fa-facebook"></a>
-    <a href="https://twitter.com/home?status={{ instance.content}}%20{{ request.build_absolute_uri }}" class="fa fa-twitter"></a>
-    <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}/&title={{ instance.title }}&summary={{ quote_tag }}&source={{ request.build_absolute_uri }}/"></a>
-    <a class="fa fa-google" href="https://plus.google.com/share?url={{ request.build_absolute_uri }}">+</a>
-	<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/&title={{ instance.title }}"></a>
+		<a href="http://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="fa fa-facebook"></a>
+		<a href="https://twitter.com/home?status={{ instance.content}}%20{{ request.build_absolute_uri }}" class="fa fa-twitter"></a>
+		<a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}/&title={{ instance.title }}&summary={{ quote_tag }}&source={{ request.build_absolute_uri }}/"></a>
+		<a class="fa fa-google" href="https://plus.google.com/share?url={{ request.build_absolute_uri }}">+</a>
+		<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/&title={{ instance.title }}"></a>
 	</div>
 </div>
 
-	<div style=" padding-top: 10px; padding-bottom: 10px; margin-bottom: 300px;width: 100%  ">
+<div style=" padding-top: 10px; padding-bottom: 10px; margin-bottom: 300px;width: 100%">
+			{% if post.image %}
+				<img style="box-shadow:1px 2px 30px; max-height: 600px " class="img-responsive" alt="{{ post.image_info }}" width="100%"  src="{{ post.image.url }}" />
+			{% endif %}
+			
+			<span style="color: #3c3c3c;padding-top: 30px;font-size: 18px;line-height: 1.8e145%m;padding-left: 5px;padding-right: 5px;
+			font-family: "Open Sans", arial, sans-serif;">{{ post.content|safe }}</span>
 
-		{% if post.image %}
-		<img style="box-shadow:1px 2px 30px; max-height: 600px " class="img-responsive" alt="{{ post.image_info }}" width="100%"  src="{{ post.image.url }}" />
-		{% endif %}
-		
-		<span style="color: #3c3c3c;padding-top: 30px;font-size: 18px;line-height: 1.8e145%m;padding-left: 5px;padding-right: 5px;
-		font-family: "Open Sans", arial, sans-serif;">{{ post.content|safe }}</span>
-	<p>
-
-
-	<div class="fb-comments"  data-width="100%" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
-	</div>
+			<!-- facebook comment plugin-->
+			<div class="fb-comments"  data-width="100%" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+		</div>
 	</div>
 </div>
 
