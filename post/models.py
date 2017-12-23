@@ -16,7 +16,7 @@ def upload_location(instance,filename):
 class PostManager(models.Manager):
     def get_queryset(self):
         pubquery = super(PostManager, self).get_queryset()
-        query = pubquery.filter(status='published')
+        query = pubquery.filter(status='published').filter(publish__lte=timezone.now())
         return query
 
 class Post(models.Model):
@@ -37,6 +37,7 @@ class Post(models.Model):
     width_field = models.IntegerField(default=0)
     image_info = models.CharField(max_length=30, default='image info', null=True, blank=True)
     content  = models.TextField()
+
     publish  = models.DateTimeField(default=timezone.now)
     created  = models.DateTimeField(auto_now=True)
     updated  = models.DateTimeField(auto_now_add=True)
@@ -56,6 +57,14 @@ class Post(models.Model):
                                  self.publish.month,                             
                                  self.publish.day,
                                  self.slug])
+    
+    def late_post(self):
+        #get late post that are after the timezone
+        return self.created < self.publish
+
+    def early_post(self):
+        #get early post that are before the timezone
+        return self.created > self.publish
                                  
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
