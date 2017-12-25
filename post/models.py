@@ -8,9 +8,8 @@ from taggit.managers import TaggableManager
 from taggit.models import TaggedItemBase
 
 # Create your models here.
-def upload_location(instance,filename):
-    return "%s %s"%(instance.id,filename)
-
+def upload_location(instance, filename):
+    return "%s %s"%(instance.id, filename)
 
 
 class PostManager(models.Manager):

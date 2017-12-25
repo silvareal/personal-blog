@@ -118,12 +118,12 @@
 
 .containers {
 	margin: 0 auto;
-
+	right: 0;
+	left: 0;
 	bottom: 0;
 	width: 100%;
 	background-color: #303030;
 	margin-bottom: 0px;	
-  
 }
 html body {
 	height: 100%
@@ -217,30 +217,27 @@ textarea {
 	}
 
 .resume-head a{
-	border-radius: 10%;
 	display: inline-block;
-	background-color: rgba(255,0,0,0.6);
 	padding: 5px 5px 5px 5px;
 	color: white;
 	text-decoration: none;
 	font-family: "Open Sans", arial, sans-serif;
-	margin-top: 10px;
-	border: solid rgba(255,0,0,0.8) 2px;
+	margin-top: 0px;
+	position: relative;
+	font-size: 30px;
 
 }
 
 
 .resume-head a:hover{
-
 	display: inline-block;
-	background-color: rgba(255,0,0,0.6);
-	padding: 5px 5px 5px 5px;
-	color:#424242;
+	background-color: rgba(255,0,0,0.2);
+	color: #999;
 	text-decoration: none;
 	font-family: "Open Sans", arial, sans-serif;
-	margin-top: 10px;
-	border: solid rgba(255,0,0,0.8) 2.3px;
-	box-shadow: 5px 5px 5px;
+	border: solid rgba(255,0,0,0.8) 0px;
+	box-shadow: 2px 0px 5spx 5px;
+	position: relative;
 }
 
 .overlay {
@@ -314,4 +311,12 @@ textarea {
 	color: white;
   }
   
+  .jumbo {
+	 font-family: "Open Sans", arial, sans-serif;
+	 font-size: 50vm;
+	 border: solid black 5px;
+	 text-align: center;
+	 padding: 50px 20px 50px 20px;
+	 margin: 15px 5px 350px 5px;
+  }
 	

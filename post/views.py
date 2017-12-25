@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 
 from . models import Post
-from . forms import PostForm, PostEmail
+from . forms import PostForm, PostEmail, UserRegistrationForm
 
 class PostList(ListView):
     model = Post
@@ -114,5 +114,23 @@ def post_list(request, tag_slug=None):
        # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
     return render(request, 'post/list.html', locals())
+
+
+
+
+def registration(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            #create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            #set the given password
+            new_user.set_password( user_form.cleaned_data['password'])
+            #save the user object
+            new_user.save()
+            return render(request, '', {'new_user': new_user})
+        else:
+            user_form = UserRegistrationForm()
+            return render(request, 'register.html', {'user_form': user_form})
     
     
