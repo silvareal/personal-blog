@@ -125,11 +125,11 @@ def registration(request):
             #create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
             #set the given password
-            new_user.set_password( user_form.cleaned_data['password'])
+            new_user.set_password(user_form.cleaned_data['password'])
             #save the user object
             new_user.save()
             return render(request, '', {'new_user': new_user})
-        else:
+    else:
             user_form = UserRegistrationForm()
             return render(request, 'register.html', {'user_form': user_form})
     

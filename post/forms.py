@@ -33,6 +33,8 @@ class ResumeMail(forms.Form):
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
 
+
+from django.contrib.auth.models import User
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label="Password",
                             widget=forms.PasswordInput)
@@ -40,7 +42,7 @@ class UserRegistrationForm(forms.ModelForm):
                             widget=forms.PasswordInput)
     
     class Meta:
-        models = User
+        model = User
         fields = ("username","first_name","email")
 
     def clean_password2(self):
