@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','tz&h3n$ly_l*$6fr+6*u3d#t(b9097sn+12s%^9fw-tj@snqnp')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ADMINS = (('silva', 'sylvernusakubo@yahoo.com'),)
 
 ALLOWED_HOSTS = ['silvadjango.herokuapp.com','127.0.0.1']
