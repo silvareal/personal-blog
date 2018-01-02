@@ -127,7 +127,7 @@ def post_list(request, tag_slug=None):
 
 
 
-
+'''
 def registration(request):
     if request.method == 'Post':
         user_form = UserRegistrationForm(request.POST)
@@ -135,17 +135,32 @@ def registration(request):
             # create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
             # set the given password
-            new_user.set_password(
-                 user_form.cleaned_data['password'])
+            new_user.set_password(user_form.cleaned_data['password'])
             # save the user object
             new_user.save()
             profile = Profile.objects.create(user=new_user)
             return render(request, 'register_done.html', {'new_user': new_user})
     else:
             user_form = UserRegistrationForm()
-            return render(request, 'register.html', {'user_form': user_form})
+    return render(request, 'register.html', {'user_form': user_form})'''
     
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms  import UserCreationForm
 
+def registration(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            profile = Profile.objects.create(user=user)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'register.html', {'form': form})
 
 @login_required
 def edit(request):

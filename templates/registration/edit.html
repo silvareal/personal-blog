@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 
 <div style="margin: 40px 40px 40px 40px;">
-    <p style="font-size: 50px;">Login Form</p><hr/>
+    <p style="font-size: 50px;">Edit Profile Form</p><hr/>
     <form action="." method="Post">
         {% csrf_token %}
         {{ user_form|crispy }}

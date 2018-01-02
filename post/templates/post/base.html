@@ -49,8 +49,9 @@
                         <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="img-responsive" style="border-radius:50%;max-height:20px;" src="{% static 'image\construct.jpg' %}" alt="ini"><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="">dashboard</a></li>
-                                    <li><a href="">logout</a></li>
+                                    <li style="border-bottom: solid black 2px;background-color:#888">logged in as {{ user.get_username }}</li>
+                                    <li><a href="{% url 'account_edit' %}">profile</a></li>
+                                    <li><a href="{% url 'logout' %}?=next{{request.path}}">logout</a></li>
                                 </ul>
                             </li>
                      {% else %}
