@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 from . models import Post
@@ -101,12 +102,18 @@ def post_share(request, post_id):
 
 def post_list(request, tag_slug=None):
     post_list = Post.publishs.all()
+    if request.user.is_staff or request.user.is_superuser:
+        post_list = Post.objects.all()
     if tag_slug:
         tag = get_object_or_404(Tag, tag_slug)
         post_list = post_list.filter(Tags__in[tag])
-    
+    query = request.GET.get("q")
+    if query:
+        post_list = post_list.filter(
+            Q(title__icontains=query)|
+            Q(username__icontains=query)|
+            Q(content__icontains=query)).distinct()
     paginator = Paginator(post_list, 3) # 3 posts in each page
-    
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
