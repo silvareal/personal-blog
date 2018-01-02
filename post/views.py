@@ -4,9 +4,12 @@ from django.views.generic import ListView
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
+from django.contrib.auth.decorators import login_required
+
 
 from . models import Post
-from . forms import PostForm, PostEmail, UserRegistrationForm
+from .models import Profile
+from . forms import PostForm, PostEmail, UserRegistrationForm, UserEditForm, ProfileEditForm
 
 class PostList(ListView):
     model = Post
@@ -119,18 +122,44 @@ def post_list(request, tag_slug=None):
 
 
 def registration(request):
-    if request.method == 'POST':
+    if request.method == 'Post':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
-            #create a new user object but avoid saving it yet
+            # create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            #set the given password
-            new_user.set_password(user_form.cleaned_data['password'])
-            #save the user object
+            # set the given password
+            new_user.set_password(
+                 user_form.cleaned_data['password'])
+            # save the user object
             new_user.save()
-            return render(request, '', {'new_user': new_user})
+            profile = Profile.objects.create(user=new_user)
+            return render(request, 'register_done.html', {'new_user': new_user})
     else:
             user_form = UserRegistrationForm()
             return render(request, 'register.html', {'user_form': user_form})
     
+
+
+@login_required
+def edit(request):
+    if request.method == 'Post':
+        user_form = UserEditForm(instance=request.user,
+                                data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                                        data=request.POST,
+                                        files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success("profile updated successfuly")
+        else:
+            messages.error("profile update failed")
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+    context = {
+        'user_form':user_form,
+        'profile_form':profile_form,
+    }
+    return render(request,'registration/edit.html', context)
     

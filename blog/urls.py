@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from post.views import registration
+from post.views import registration, edit
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +24,10 @@ urlpatterns += [
 
 urlpatterns +=[
     url(r'^accounts/', include('django.contrib.auth.urls')),
+]
+
+urlpatterns +=[
+    url(r'^accounts/edit/$', edit, name='account_edit' ),
 ]
 
 #user registration

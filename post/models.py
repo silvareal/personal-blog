@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.conf import settings
 from django.core.urlresolvers import reverse
 
 #taggit 
@@ -84,3 +85,11 @@ def pre_save_post_reciver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance)
 
 pre_save.connect(pre_save_post_reciver, sender=Post)
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    date_of_birth = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to=upload_location, blank=True, null=True)
+
+    def __str__(self):
+        return 'profile for user {}'.format(self.user.username)

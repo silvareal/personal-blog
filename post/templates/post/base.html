@@ -15,17 +15,40 @@
 
 
 <body>
+    	{% include "post/message.html" %}
+    <nav class="navbar navbar-inverse" style="position:relative; top: 0px; right: 0px; left: 0px; margin-bottom: 30px; ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="" class="navbar-brand" style="font-family: Lobster, san-serif ; font-size: 20px;"><img alt="silvablog" class="pull-left" style="max-height:40px; margin-top:-10px;" src="" /> </a>
+            </div>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav">
+                    <li style="font-family: Lobster, san-serif ; font-size: 20px; "><a href="{% url 'post:lists' %}">home</a></li>
+                    <li style="font-family: Lobster, san-serif ; font-size: 20px;"><a href="#" >resume</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li class="dropdown">
+                                <a style="font-family: san-serif ; font-size: 18px;"  class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="img-responsive" style="border-radius:50%;max-height:20px;" src="{% static 'image\construct.jpg' %}" alt="ini">{{ user.get_username }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">dashboard</a></li>
+                                    <li><a href="">logout</a></li>
+                                </ul>
+                            </li>
+                     {% else %}
+                        <li><a href="{% url 'registration' %}"><span class="glyphicon glyphicon-user"><span style="font-family: Lobster, san-serif ; font-size: 20px; margin-left: 10px;">signup</span></span></a></li>
+                        <li><a href="{% url 'login' %}?=next{{request.path}}"><span class="glyphicon glyphicon-log-in"><span style="font-family: Lobster, san-serif ; font-size: 20px; margin-left: 10px;">login</span></span></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    
-<div>
-	{% include "post/message.html" %}
-
-	<header class="head resume-head"  style="background-color: #3c3c3c;top: 0; border-radius: 10%">
-        <a href="{% url 'post:lists' %}" class="resume-had">silvablog</a> 
-         <a href="{% url 'resume_cv' %}" class="resme-head" >resume</a>  
-    </header>
-
-</div>
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></Script>

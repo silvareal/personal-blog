@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','tz&h3n$ly_l*$6fr+6*u3d#t(b9097sn+12s%^9fw-tj@snqnp')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ADMINS = (('silva', 'sylvernusakubo@yahoo.com'),)
 
 ALLOWED_HOSTS = ['silvadjango.herokuapp.com','127.0.0.1']
@@ -156,4 +156,5 @@ EMAIL_HOST_USER = 'akubosylvernus@gmail.com'
 EMAIL_HOST_PASSWORD = 'silva1078' 
 EMAIL_PORT = 587 
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 send_mail = ('Subject','Message.','akubosylvernus@gmail.com',['akubosylvernus@gmail.com', ],)

@@ -3,12 +3,12 @@
 {% block title %} signup || {{ block.super }}{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div style="margin: 40px 100px 40px 40px;">
+<div style="margin: 40px 40px 40px 40px;">
     <p style="font-size: 50px;">Signup Form</p><hr/>
-    <form action="{% url 'registration' %}" method="Post">
+    <form action="" method="Post">
         {% csrf_token %}
         {{ user_form|crispy }}
-        <button style="color:white;border: solid black 1px;width: 20%; height: 5%;background-color: rgba(255,0,0,0.7)">Signup</button>
+        <button style="color:white;border: solid black 1px;width: 100%; height: 5%;background-color: rgba(255,0,0,0.7)">Signup</button>
     </form>
 </div>
 {% endblock %}
